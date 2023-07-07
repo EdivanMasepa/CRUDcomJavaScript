@@ -2,31 +2,43 @@ let resultado;
 let person;
 let list = [];
 
-
-function GetValues(){
-        resultado = document.getElementById('resultado');
-
-}
 function Clear(){
-        nome.innerHTML('');
-        age.innerHTML('');
-        pass.innerHTML('');
-
+        document.querySelector('#idName').value = "";
+        document.querySelector('#idAge').value = "";
+        document.querySelector('#idPass').value = "";
+    
 }
 function Create(){
-    list.push(person)
-}
-function Read(){
-    person = {  
-        nameC: document.getElementById('idName').value,
-        ageC: document.getElementById('idAge').value, 
-        passC: document.getElementById('idPass').value
+    for (let i = -1; i < list.length; i++){    
+        person = {  
+            id : i+2,
+            name: document.getElementById('idName').value,
+            age: document.getElementById('idAge').value, 
+            pass: document.getElementById('idPass').value
+        }
     }
-    console.log(list)
+
+    list.unshift(person);
+    Clear();
+}
+function Read(){ 
+    document.getElementById('resultado').innerHTML = JSON.stringify(list)
+   //document.getElementById('resultado').innerHTML = `<p>ID: ${person.id} NOME: ${person.id}} IDADE: ${person.age} SENHA: ${person.pass}</p>`;
 }
 function Update(){
 
 }
 function Delete(){
 
+}
+function buscar(){
+    let search = document.getElementById('search').value;
+    if(list[0].includes(person.id) == search){
+        document.querySelector('#idName').value = person.name;
+        document.querySelector('#idAge').value = person.age;
+        document.querySelector('#idPass').value = person.pass;
+        console.log('deu certo');
+    }else{
+        return console.log("Id não encontrado.");
+    }
 }

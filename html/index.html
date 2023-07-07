@@ -18,9 +18,14 @@
             <label for="idPass">SENHA: </label>
             <input type="text" name="passBtn"  id="idPass" placeholder="Digite aqui..." maxlength="15">
 
-            <button type="submit" onclick="Create()">Login</button>
+            <button type="submit" onclick="Create()">Cadastrar</button>
 
             <button type="submit" onclick="Read()">Listar</button>
+
+            <input type="number" placeholder="Id" id="search">>
+            <button type="submit" onclick="buscar()">Buscar</button>
+            <button type="submit" onclick="Update()">Alterar</button>
+
             <div id="resultado"></div>
 </body>
 <script src="../js/main.js"></script>
