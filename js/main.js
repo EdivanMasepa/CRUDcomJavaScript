@@ -1,12 +1,14 @@
 let resultado;
 let person;
 let list = [];
+let search;
+let x;
 
 function Clear(){
         document.querySelector('#idName').value = "";
         document.querySelector('#idAge').value = "";
         document.querySelector('#idPass').value = "";
-    
+        document.querySelector('#search').value = "";
 }
 function Create(){
     for (let i = -1; i < list.length; i++){    
@@ -22,23 +24,33 @@ function Create(){
     Clear();
 }
 function Read(){ 
-    document.getElementById('resultado').innerHTML = JSON.stringify(list)
-   //document.getElementById('resultado').innerHTML = `<p>ID: ${person.id} NOME: ${person.id}} IDADE: ${person.age} SENHA: ${person.pass}</p>`;
+    document.getElementById('resultado').innerHTML = JSON.stringify(list);
 }
 function Update(){
-
+    list[x].name = document.getElementById('idName').value;
+    list[x].age = document.getElementById('idAge').value;
+    list[x].pass = document.getElementById('idPass').value;
+    Clear();
 }
 function Delete(){
-
+    list.splice(x, 1);
+    Clear();
 }
 function buscar(){
-    let search = document.getElementById('search').value;
-    if(list[0].includes(person.id) == search){
-        document.querySelector('#idName').value = person.name;
-        document.querySelector('#idAge').value = person.age;
-        document.querySelector('#idPass').value = person.pass;
-        console.log('deu certo');
-    }else{
-        return console.log("Id não encontrado.");
+    parseInt(search, 10);
+
+    search = document.getElementById('search').value;
+
+    for(let i = 0; i < list.length; i++){
+        if(list[i].id == search){
+            x = i;
+            document.querySelector('#idName').value = list[i].name;
+            document.querySelector('#idAge').value = list[i].age;
+            document.querySelector('#idPass').value = list[i].pass;
+        }
     }
+}
+function imprimir(item) {
+    console.log(item);
+    document.getElementById('resultado').innerHTML = JSON.stringify(person);
 }
